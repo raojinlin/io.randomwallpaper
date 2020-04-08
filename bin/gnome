@@ -1,0 +1,43 @@
+#!/bin/bash
+
+PID=$(pgrep gnome-session)
+DISPLAY=":0";
+export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ | cut -d= -f2-)
+
+# if you need proxy
+export ALL_PROXY=socks5://127.0.0.1:1080
+
+# see https://askubuntu.com/questions/742870/background-not-changing-using-gsettings-from-cron
+
+# script for gnome background change
+
+provider="$2";
+
+if [[ -z "$2" ]]; then
+  provider="gnome";
+fi
+
+picture=$(java -jar "$1"  "$provider");
+
+if [[ 0 -eq $? ]]; then
+  save_path='/tmp/random_background.jpg';
+  save_temp_path="$save_path.tmp";
+
+  if [[ -n "$picture" ]]; then
+    if echo "$picture" | grep "file://" > /dev/null; then
+      echo "Using local file ${picture#file://}";
+      save_path="$picture";
+    else
+      echo "Download img $picture";
+      curl -o "$save_temp_path" "$picture";
+      mv -v $save_temp_path "$save_path";
+    fi
+
+    # echo "dconf write /org/gnome/desktop/background/picture-uri \"'$save_path'\"";
+    echo "Updating gnome background via dconf, set /org/gnome/desktop/background/picture-uri to \"'$save_path'\"";
+    dconf write "/org/gnome/desktop/background/picture-uri" "'$save_path'";
+  fi
+else
+  exit $?;
+fi
+
