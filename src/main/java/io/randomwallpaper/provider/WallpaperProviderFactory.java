@@ -1,5 +1,5 @@
 package io.randomwallpaper.provider;
 
-public interface WrapperProviderFactory {
+public interface WallpaperProviderFactory {
     Provider instance();
 }

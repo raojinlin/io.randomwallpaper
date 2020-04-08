@@ -1,16 +1,16 @@
-import io.randomwallpaper.model.WrapperModel;
-import io.randomwallpaper.provider.GnomeBuildInWrapperProviderFactory;
-import io.randomwallpaper.provider.UnSplashWrapperProviderFactory;
-import io.randomwallpaper.provider.WrapperProviderFactory;
+import io.randomwallpaper.model.WallpaperModel;
+import io.randomwallpaper.provider.GnomeBuildInWallpaperProviderFactory;
+import io.randomwallpaper.provider.UnSplashWallpaperProviderFactory;
+import io.randomwallpaper.provider.WallpaperProviderFactory;
 
 
 public class Main {
     public static void main(String[] args) {
-        WrapperProviderFactory factory = new GnomeBuildInWrapperProviderFactory();
+        WallpaperProviderFactory factory = new GnomeBuildInWallpaperProviderFactory();
 
         if (args.length >= 1) {
             if (args[0].equals("unsplash")) {
-                factory = new UnSplashWrapperProviderFactory();
+                factory = new UnSplashWallpaperProviderFactory();
             } else if (!args[0].equals("gnome")) {
                 System.err.println("Unknown provider: '"+ args[0] +"', using default provider 'gnome'.");
             }
@@ -19,7 +19,7 @@ public class Main {
             System.exit(1);
         }
 
-        WrapperModel model = factory.instance().getWrapper();
+        WallpaperModel model = factory.instance().getWrapper();
         System.out.println(model.getUrl());
     }
 }

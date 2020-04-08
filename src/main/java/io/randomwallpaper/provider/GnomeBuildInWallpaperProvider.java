@@ -1,6 +1,6 @@
 package io.randomwallpaper.provider;
 
-import io.randomwallpaper.model.WrapperModel;
+import io.randomwallpaper.model.WallpaperModel;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -9,15 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GnomeBuildInWrapperProvider implements Provider {
+public class GnomeBuildInWallpaperProvider implements Provider {
     private String[] buildInWrapperDirs = new String[]{
             "/usr/share/backgrounds",
             System.getenv("HOME") + "/.local/share/backgrounds"
     };
     private Random random = new Random();
 
-    public WrapperModel getWrapper() {
-        WrapperModel wrapperModel = new WrapperModel();
+    public WallpaperModel getWrapper() {
+        WallpaperModel wallpaperModel = new WallpaperModel();
         int count = 0;
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File pathname) {
@@ -40,7 +40,7 @@ public class GnomeBuildInWrapperProvider implements Provider {
         }
 
         if (count == 0) {
-            return wrapperModel;
+            return wallpaperModel;
         }
 
         int next = random.nextInt(10);
@@ -49,7 +49,7 @@ public class GnomeBuildInWrapperProvider implements Provider {
         }
 
 
-        wrapperModel.setUrl("file://" + fileList.get(next).getAbsolutePath());
-        return wrapperModel;
+        wallpaperModel.setUrl("file://" + fileList.get(next).getAbsolutePath());
+        return wallpaperModel;
     }
 }

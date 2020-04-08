@@ -10,15 +10,15 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import io.randomwallpaper.model.UnSplashModel;
-import io.randomwallpaper.model.WrapperModel;
+import io.randomwallpaper.model.WallpaperModel;
 
 
 
-public class UnSplashWrapperProvider implements Provider {
+public class UnSplashWallpaperProvider implements Provider {
     private Random random = new Random();
     private int page = 0;
 
-    public UnSplashWrapperProvider() {}
+    public UnSplashWallpaperProvider() {}
 
     void setNextPage() {
         page = random.nextInt(1000);
@@ -28,8 +28,8 @@ public class UnSplashWrapperProvider implements Provider {
         return "https://unsplash.com/napi/landing_pages/backgrounds/desktop?per_page=1&page=" + page;
     }
 
-    WrapperModel getWrapperModel(UnSplashModel unSplashModel) {
-        WrapperModel model = new WrapperModel(
+    WallpaperModel getWrapperModel(UnSplashModel unSplashModel) {
+        WallpaperModel model = new WallpaperModel(
                 unSplashModel.photos.get(0).urls.raw,
                 unSplashModel.photos.get(0).id
         );
@@ -41,7 +41,7 @@ public class UnSplashWrapperProvider implements Provider {
         return model;
     }
 
-    public WrapperModel getWrapper() {
+    public WallpaperModel getWrapper() {
         setNextPage();
         DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(getUrl());
@@ -59,6 +59,6 @@ public class UnSplashWrapperProvider implements Provider {
             System.err.println(e.getMessage());
         }
 
-        return new WrapperModel();
+        return new WallpaperModel();
     }
 }

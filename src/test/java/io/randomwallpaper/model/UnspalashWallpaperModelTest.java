@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
-public class UnspalashWrapperModelTest {
+public class UnspalashWallpaperModelTest {
     @Test
     public void JSONToModel() throws FileNotFoundException {
         FileInputStream fileInputStream = new FileInputStream("src/main/resources/unsplash.com.response.json");

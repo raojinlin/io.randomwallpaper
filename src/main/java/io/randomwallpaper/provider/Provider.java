@@ -1,7 +1,7 @@
 package io.randomwallpaper.provider;
 
-import io.randomwallpaper.model.WrapperModel;
+import io.randomwallpaper.model.WallpaperModel;
 
 public interface Provider {
-    WrapperModel getWrapper();
+    WallpaperModel getWrapper();
 }

@@ -1,15 +1,15 @@
 package io.randomwallpaper.model;
 
-public class WrapperModel {
+public class WallpaperModel {
     private String url = "";
     private String id = "";
     private int width = 0;
     private int height = 0;
     private String refer = "";
 
-    public WrapperModel() {}
+    public WallpaperModel() {}
 
-    public WrapperModel(String url, String id) {
+    public WallpaperModel(String url, String id) {
         this.url = url;
         this.id = id;
     }
