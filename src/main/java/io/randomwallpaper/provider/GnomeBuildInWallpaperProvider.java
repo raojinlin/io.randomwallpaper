@@ -16,7 +16,7 @@ public class GnomeBuildInWallpaperProvider implements Provider {
     };
     private Random random = new Random();
 
-    public WallpaperModel getWrapper() {
+    public WallpaperModel getWallpaper() {
         WallpaperModel wallpaperModel = new WallpaperModel();
         int count = 0;
         FileFilter fileFilter = new FileFilter() {

@@ -8,7 +8,7 @@ public class GnomeBuildInWallpaperProviderTest {
     @Test
     public void getWrapperTest() {
         GnomeBuildInWallpaperProviderFactory factory = new GnomeBuildInWallpaperProviderFactory();
-        WallpaperModel model = factory.instance().getWrapper();
+        WallpaperModel model = factory.instance().getWallpaper();
 
         Assert.assertNotEquals("", model.getUrl());
         Assert.assertNotEquals(false, model.getUrl().startsWith("file://"));

@@ -41,7 +41,7 @@ public class UnSplashWallpaperProvider implements Provider {
         return model;
     }
 
-    public WallpaperModel getWrapper() {
+    public WallpaperModel getWallpaper() {
         setNextPage();
         DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(getUrl());

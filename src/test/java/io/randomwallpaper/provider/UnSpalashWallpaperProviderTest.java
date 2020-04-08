@@ -8,7 +8,7 @@ public class UnSpalashWallpaperProviderTest {
     @Test
     public void getWrapperTest() {
         UnSplashWallpaperProviderFactory factory = new UnSplashWallpaperProviderFactory();
-        WallpaperModel model = factory.instance().getWrapper();
+        WallpaperModel model = factory.instance().getWallpaper();
 
         Assert.assertNotEquals("", model.getUrl());
         Assert.assertNotEquals("", model.getId());

@@ -19,7 +19,7 @@ public class Main {
             System.exit(1);
         }
 
-        WallpaperModel model = factory.instance().getWrapper();
+        WallpaperModel model = factory.instance().getWallpaper();
         System.out.println(model.getUrl());
     }
 }
