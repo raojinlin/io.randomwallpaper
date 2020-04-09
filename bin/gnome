@@ -17,7 +17,7 @@ if [[ -z "$2" ]]; then
   provider="gnome";
 fi
 
-picture=$(java -jar "$1"  "$provider");
+picture=$(java -jar "$1"  -p "unsplash" -q full);
 
 if [[ 0 -eq $? ]]; then
   save_path='/tmp/random_background.jpg';
