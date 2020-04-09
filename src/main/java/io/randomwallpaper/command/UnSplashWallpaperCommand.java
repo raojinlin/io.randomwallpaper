@@ -10,8 +10,8 @@ import java.util.Arrays;
 public class UnSplashWallpaperCommand extends Command {
     public UnSplashWallpaperCommand() {
         options.addOption("h", "help", false, "print help");
-        options.addOption("q", "quantity", true, "the wallpaper quantity, one of " +
-                Arrays.toString(UnSplashWallpaperProvider.getQuantitys()));
+        options.addOption("q", "quality", true, "the wallpaper quality, one of " +
+                Arrays.toString(UnSplashWallpaperProvider.getQuality()));
         command = "Unsplash wallpaper provider";
     }
 
@@ -27,8 +27,8 @@ public class UnSplashWallpaperCommand extends Command {
 
         tryPrintHelp(commandLine);
 
-        if (commandLine.hasOption("quantity")) {
-            provider.setQuantity(commandLine.getOptionValue("quantity"));
+        if (commandLine.hasOption("quality")) {
+            provider.setQuantity(commandLine.getOptionValue("quality"));
         }
 
         try {

@@ -18,8 +18,8 @@ import io.randomwallpaper.model.WallpaperModel;
 public class UnSplashWallpaperProvider implements Provider {
     private Random random = new Random();
     private int page = 0;
-    private static final String[] quantitys = new String[]{"full", "raw", "regular", "small", "thumb"};
-    private String quantity = "raw";
+    private static final String[] qualitys = new String[]{"full", "raw", "regular", "small", "thumb"};
+    private String quality = "raw";
 
     public UnSplashWallpaperProvider() {}
 
@@ -27,19 +27,19 @@ public class UnSplashWallpaperProvider implements Provider {
         page = random.nextInt(1000);
     }
 
-    public void setQuantity(String quantity) throws UnknownWallpaperQuantityException {
-        for (String q: quantitys) {
-            if (quantity.equals(q)) {
-                this.quantity = quantity;
+    public void setQuantity(String quality) throws UnknownWallpaperQuantityException {
+        for (String q: qualitys) {
+            if (quality.equals(q)) {
+                this.quality = quality;
                 return;
             }
         }
 
-        throw new UnknownWallpaperQuantityException("Unknown quantity: '" + quantity + "'");
+        throw new UnknownWallpaperQuantityException("Unknown quality: '" + quality + "'");
     }
 
-    public static String[] getQuantitys() {
-        return quantitys;
+    public static String[] getQuality() {
+        return qualitys;
     }
 
     String getUrl() {
@@ -48,11 +48,11 @@ public class UnSplashWallpaperProvider implements Provider {
 
     WallpaperModel getWrapperModel(UnSplashModel unSplashModel) {
         String url = unSplashModel.photos.get(0).urls.raw;
-        if (quantity.equals("full")) {
+        if (quality.equals("full")) {
             url = unSplashModel.photos.get(0).urls.full;
-        } else if (quantity.equals("regular")) {
+        } else if (quality.equals("regular")) {
             url = unSplashModel.photos.get(0).urls.regular;
-        } else if (quantity.equals("small")) {
+        } else if (quality.equals("small")) {
             url = unSplashModel.photos.get(0).urls.small;
         }
 

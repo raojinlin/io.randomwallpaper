@@ -22,7 +22,7 @@ usage: Local wallpaper provider
 # unsplash provider
 usage: Unsplash wallpaper provider
  -h,--help             print help
- -q,--quantity <arg>   the wallpaper quantity, one of [full, raw, regular,
+ -q,--quality <arg>   the wallpaper quality, one of [full, raw, regular,
                        small, thumb]
 
 ```
