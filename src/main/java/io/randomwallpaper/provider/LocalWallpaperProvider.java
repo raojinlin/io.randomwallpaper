@@ -9,12 +9,23 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GnomeBuildInWallpaperProvider implements Provider {
-    private String[] buildInWrapperDirs = new String[]{
+public class LocalWallpaperProvider implements Provider {
+    private String[] localWrapperDirs = new String[]{
             "/usr/share/backgrounds",
             System.getenv("HOME") + "/.local/share/backgrounds"
     };
+
     private Random random = new Random();
+
+    public LocalWallpaperProvider() {}
+
+    public LocalWallpaperProvider(String[] dirs) {
+        setLocalWrapperDirs(dirs);
+    }
+
+    public void setLocalWrapperDirs(String[] dirs) {
+        localWrapperDirs = dirs;
+    }
 
     public WallpaperModel getWallpaper() {
         WallpaperModel wallpaperModel = new WallpaperModel();
@@ -26,7 +37,7 @@ public class GnomeBuildInWallpaperProvider implements Provider {
         };
 
         List<File> fileList = new ArrayList<File>();
-        for (String dir: buildInWrapperDirs) {
+        for (String dir: localWrapperDirs) {
             File file = new File(dir);
             if (file.isDirectory()) {
 

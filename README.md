@@ -1,7 +1,31 @@
 
 # Random wrapper  
   
-Provide a random wallpaper.  
+Provide a random wallpaper.
+
+## Command line options
+
+```
+
+# main
+usage: randomwallpaper
+ -h,--help             print help
+ -p,--provider <arg>   wallpaper provider. 'local'|'unspash'
+
+# local provider
+
+usage: Local wallpaper provider
+ -d,--dir <arg>   wallpaper directory
+ -h,--help        print help
+
+
+# unsplash provider
+usage: Unsplash wallpaper provider
+ -h,--help             print help
+ -q,--quantity <arg>   the wallpaper quantity, one of [full, raw, regular,
+                       small, thumb]
+
+```
   
 You can use it on the gnome desktop.  
   
