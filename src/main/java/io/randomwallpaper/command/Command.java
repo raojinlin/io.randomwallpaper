@@ -1,6 +1,6 @@
 package io.randomwallpaper.command;
 
-import io.randomwallpaper.UnknownWallpaperQuantityException;
+import io.randomwallpaper.UnknownWallpaperQualityException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
@@ -38,5 +38,5 @@ public abstract class Command {
      * @param args arguments
      * @return int status code of execute result
      */
-    public abstract int execute(String[] args) throws ParseException, UnknownWallpaperQuantityException;
+    public abstract int execute(String[] args) throws ParseException, UnknownWallpaperQualityException;
 }

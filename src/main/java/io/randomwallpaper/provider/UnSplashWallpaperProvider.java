@@ -5,7 +5,7 @@ import java.util.*;
 import java.io.IOException;
 
 import com.google.gson.*;
-import io.randomwallpaper.UnknownWallpaperQuantityException;
+import io.randomwallpaper.UnknownWallpaperQualityException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -27,7 +27,7 @@ public class UnSplashWallpaperProvider implements Provider {
         page = random.nextInt(1000);
     }
 
-    public void setQuantity(String quality) throws UnknownWallpaperQuantityException {
+    public void setQuantity(String quality) throws UnknownWallpaperQualityException {
         for (String q: qualitys) {
             if (quality.equals(q)) {
                 this.quality = quality;
@@ -35,7 +35,7 @@ public class UnSplashWallpaperProvider implements Provider {
             }
         }
 
-        throw new UnknownWallpaperQuantityException("Unknown quality: '" + quality + "'");
+        throw new UnknownWallpaperQualityException("Unknown quality: '" + quality + "'");
     }
 
     public static String[] getQuality() {

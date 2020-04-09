@@ -1,5 +1,5 @@
 import io.randomwallpaper.UnknownWallpaperProviderException;
-import io.randomwallpaper.UnknownWallpaperQuantityException;
+import io.randomwallpaper.UnknownWallpaperQualityException;
 import io.randomwallpaper.command.LocalWallpaperProviderCommand;
 import io.randomwallpaper.command.UnSplashWallpaperCommand;
 import org.apache.commons.cli.*;
@@ -19,7 +19,7 @@ public class Command {
         return slices;
     }
 
-    public static void main(String[] args) throws ParseException, UnknownWallpaperProviderException, UnknownWallpaperQuantityException {
+    public static void main(String[] args) throws ParseException, UnknownWallpaperProviderException, UnknownWallpaperQualityException {
         Options options = new Options();
         HelpFormatter helpFormatter = new HelpFormatter();
 

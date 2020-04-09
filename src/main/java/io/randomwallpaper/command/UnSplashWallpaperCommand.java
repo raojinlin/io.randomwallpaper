@@ -1,6 +1,6 @@
 package io.randomwallpaper.command;
 
-import io.randomwallpaper.UnknownWallpaperQuantityException;
+import io.randomwallpaper.UnknownWallpaperQualityException;
 import io.randomwallpaper.provider.UnSplashWallpaperProvider;
 import io.randomwallpaper.provider.UnSplashWallpaperProviderFactory;
 import org.apache.commons.cli.*;
@@ -15,7 +15,7 @@ public class UnSplashWallpaperCommand extends Command {
         command = "Unsplash wallpaper provider";
     }
 
-    public int execute(String[] args) throws ParseException, UnknownWallpaperQuantityException {
+    public int execute(String[] args) throws ParseException, UnknownWallpaperQualityException {
         UnSplashWallpaperProviderFactory factory = new UnSplashWallpaperProviderFactory();
         UnSplashWallpaperProvider provider = factory.instance();
 
