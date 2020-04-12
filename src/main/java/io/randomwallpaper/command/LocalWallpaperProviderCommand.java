@@ -4,6 +4,8 @@ import io.randomwallpaper.provider.LocalWallpaperProvider;
 import io.randomwallpaper.provider.LocalWallpaperProviderFactory;
 import org.apache.commons.cli.*;
 
+import java.io.File;
+
 
 public class LocalWallpaperProviderCommand extends Command {
 
@@ -23,8 +25,22 @@ public class LocalWallpaperProviderCommand extends Command {
 
         tryPrintHelp(cmd);
 
+        if (!cmd.hasOption("dir")) {
+            System.err.println("dir required.");
+            return 127;
+        }
+
         try {
             String dir = cmd.getOptionValue("dir");
+            File file = new File(dir);
+            if (!file.exists()) {
+                System.err.println("No such directory: '" + dir + "'");
+                return 2;
+            } else if (!file.isDirectory()) {
+                System.err.println("Not a directory: '" + dir + "'");
+                return 2;
+            }
+
             provider.setLocalWrapperDirs(new String[]{dir});
             System.out.println(provider.getWallpaper().getUrl());
             return 0;

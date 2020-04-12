@@ -7,14 +7,13 @@ import org.apache.commons.cli.*;
 
 public class Command {
     public static String[] slice(String[] args, int start, int end) {
-        if (start + 1 > args.length) {
-            return new String[]{};
+        if (start >= args.length - 1) {
+            return args;
         }
 
         String[] slices = new String[end - start];
-        for (int i = start; i < end; i++) {
-            slices[i - start] = args[i];
-        }
+
+        System.arraycopy(args, start, slices, 0, end - start);
 
         return slices;
     }
@@ -23,8 +22,11 @@ public class Command {
         Options options = new Options();
         HelpFormatter helpFormatter = new HelpFormatter();
 
-        options.addOption("h", "help", false, "print help");
         options.addOption("p", "provider", true, "wallpaper provider. 'local'|'unspash'");
+        Option help = new Option("h", "print help");
+        help.setLongOpt("help");
+        help.setOptionalArg(true);
+        options.addOption(help);
 
         String prog = "randomwallpaper";
         if (args.length == 0) {
